@@ -124,7 +124,7 @@ public class Main_Account_Promillometer extends Fragment implements View.OnClick
     public void onClick(View v){
         if(v.getId()==R.id.button) {
 
-            Toast.makeText(getActivity(),"Save Data",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Saved Data",Toast.LENGTH_SHORT).show();
 
             //save geb
             String geburtsdatum = mGeburtstag.getText().toString();
@@ -190,5 +190,12 @@ public class Main_Account_Promillometer extends Fragment implements View.OnClick
         });
 
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        checkSharedPreferences();
     }
 }

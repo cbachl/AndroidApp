@@ -1,5 +1,6 @@
 package at.fhooe.mc.android.applicationandroid;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +41,22 @@ public class MainActivity extends AppCompatActivity {
         // promillometer_toolbar = new Main_Promillometer_Start_Screen();
         mainAccount = new Main_Account_Promillometer();
 
-        setFragment(berechnen_toolbar);
+
+        SharedPreferences mPreferences = getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
+        SharedPreferences.Editor editor = mPreferences.edit();
+        String geb = mPreferences.getString(getString(R.string.gebDatum), "0");
+        String gew = mPreferences.getString(getString(R.string.gewicht), "0");
+        String größ = mPreferences.getString(getString(R.string.größe), "0");
+
+        if (gew.isEmpty() || geb.equals("") || größ.equals("") || mPreferences.getInt("LastClickGenderSpinner", 0) == 0) {
+            Toast.makeText(this, "Alle Felder im Tab 'Account' müssen ausgefüllt sein!", Toast.LENGTH_SHORT).show();
+            setFragment(mainAccount);
+        }else{
+            setFragment(berechnen_toolbar);
+        }
+
+
+
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
