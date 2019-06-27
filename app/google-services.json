@@ -1,0 +1,93 @@
+{
+  "project_info": {
+    "project_number": "524190728056",
+    "firebase_url": "https://promillometer.firebaseio.com",
+    "project_id": "promillometer",
+    "storage_bucket": "promillometer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524190728056:android:f3f5866b9524a359",
+        "android_client_info": {
+          "package_name": "at.fhooe.mc.android.applicationandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524190728056-t091uqidj16mt9thf2g7sdfm9fmjem5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "at.fhooe.mc.android.applicationandroid",
+            "certificate_hash": "b74e7fd3bfac542a556f796962199dccd50be286"
+          }
+        },
+        {
+          "client_id": "524190728056-0k92q913dheop3gm8ss34ba9vtkpjgln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfk3oUh38F2bqg2ho9yFidhOc5aa2HkL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524190728056-0k92q913dheop3gm8ss34ba9vtkpjgln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524190728056:android:2238c6ffb5cab709",
+        "android_client_info": {
+          "package_name": "at.fhooe.mc.android.promillometer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524190728056-7ompdjho1e31s9blbmg7oarid216d1ok.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "at.fhooe.mc.android.promillometer",
+            "certificate_hash": "b74e7fd3bfac542a556f796962199dccd50be286"
+          }
+        },
+        {
+          "client_id": "524190728056-famtcag7tejprk72i5pvmmf09n3kvi93.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "at.fhooe.mc.android.promillometer",
+            "certificate_hash": "396eb67b2fdb2cd9f310d9f2e3ba3ed5b98c9fb0"
+          }
+        },
+        {
+          "client_id": "524190728056-0k92q913dheop3gm8ss34ba9vtkpjgln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfk3oUh38F2bqg2ho9yFidhOc5aa2HkL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524190728056-0k92q913dheop3gm8ss34ba9vtkpjgln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

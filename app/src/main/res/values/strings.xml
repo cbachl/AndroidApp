@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Promill</string>
+    <string name="Promillometer">Promillometer</string>
+    <string name="checkbox">at.fhooe.mc.android.promillometer.checkbox</string>
+    <string name="größe">at.fhooe.mc.android.promillometer.größe</string>
+    <string name="gewicht">at.fhooe.mc.android.promillometer.gewicht</string>
+    <string name="gebDatum">at.fhooe.mc.android.promillometer.gebDatum</string>
+    <string name="geschlecht">at.fhooe.mc.android.promillometer.geschlecht</string>
+    <string name="result">at.fhooe.mc.android.promillometer.result</string>
+    <string name="time">at.fhooe.mc.android.promillometer.time</string>
+
+
+
+
+</resources>
