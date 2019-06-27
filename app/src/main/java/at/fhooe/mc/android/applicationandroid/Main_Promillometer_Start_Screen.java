@@ -26,6 +26,7 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
     Button b;
     Arduino arduino;
     boolean connected;
+    String msg;
 
     public Main_Promillometer_Start_Screen() {
         // Required empty public constructor
@@ -129,7 +130,20 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                tv_value.setText(message+"\n");
+                if(message.startsWith("_Val:")) {
+                    msg = message.substring(5);
+                    tv_value.setText(msg + " Promille\n");
+                }
+                if(message.startsWith("_Preheat:")){
+                    msg = message.substring(9);
+                    tv_value.setText("Promillometer heizt sich auf.\nBitte warte noch " + msg + " Sekunden\n");
+                }
+                if(message.startsWith("_Blow:")){
+                    msg = message.substring(6);
+                    tv_value.setText("Bitte noch " + msg + " Sekunden blasen!\n");
+                }else {
+                    tv_value.setText("Undefinierter Status: " + message);
+                }
             }
         });
     }
