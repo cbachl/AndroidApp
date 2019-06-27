@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -49,8 +50,10 @@ public class MainActivity extends AppCompatActivity {
         String größ = mPreferences.getString(getString(R.string.größe), "0");
 
         if (gew.isEmpty() || geb.equals("") || größ.equals("") || mPreferences.getInt("LastClickGenderSpinner", 0) == 0) {
-            Toast.makeText(this, "Alle Felder im Tab 'Account' müssen ausgefüllt sein!", Toast.LENGTH_SHORT).show();
+
             setFragment(mainAccount);
+            mMainNav.setSelectedItemId(R.id.nav_tool_account);
+
         }else{
             setFragment(berechnen_toolbar);
         }
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
 
                     case R.id.nav_tool_account:
+
                         mMainNav.setItemBackgroundResource(R.color.myColorBlack);
                         setFragment(mainAccount);
                         return true;
