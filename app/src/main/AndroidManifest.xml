@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_logo_promillometer_round"
+        android:icon="@mipmap/app_logo"
         android:label="Promillometer"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/app_logo_round"
         android:supportsRtl="true"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">

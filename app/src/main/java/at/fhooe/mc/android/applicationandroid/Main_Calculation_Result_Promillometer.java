@@ -2,6 +2,7 @@
 package at.fhooe.mc.android.applicationandroid;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -31,6 +32,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -53,6 +55,8 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
     List<SpinnerDataDrinks> drinks;
 
     Spinner DrinkSpinner, volumeSpinner;
+
+    Handler h;
 
 
 
@@ -81,6 +85,27 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
 
         loadData();
         updateAlcValue();
+
+        //Update every 10 minutes
+        Handler h = new Handler();
+        new Thread(new Runnable() {
+            public void run() {
+                while (true) {
+                    try {
+                        h.post(new Runnable() {
+                            public void run() {
+                                updateAlcValue();
+                            }
+                        });
+                        TimeUnit.MINUTES.sleep(10);
+                    } catch (Exception ex) {
+                    }
+                }
+            }
+        }).start();
+
+
+
 
 
         adapter = new ArrayAdapter<>(getActivity(), R.layout.list_item, R.id.textItemSpinner, arrayList);
