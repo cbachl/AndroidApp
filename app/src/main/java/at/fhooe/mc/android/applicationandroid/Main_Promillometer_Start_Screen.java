@@ -1,6 +1,7 @@
 package at.fhooe.mc.android.applicationandroid;
 
 
+import android.content.SharedPreferences;
 import android.hardware.usb.UsbDevice;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,8 +13,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import me.aflak.arduino.Arduino;
 import me.aflak.arduino.ArduinoListener;
+
+import static android.content.Context.MODE_PRIVATE;
+import static at.fhooe.mc.android.applicationandroid.Main_Calculation_Result_Promillometer.soberTimeTv;
 
 
 /**
@@ -101,6 +108,7 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
     @Override
     public void onArduinoDetached() {
         tv_connected.setText("Verbunden: NEIN");
+        tv_value.setText("");
         connected = false;
         arduino.close();
     }
@@ -127,18 +135,24 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
 
 
     public void display(final String message){
+
+        SharedPreferences mPreferences = getActivity().getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
+        SharedPreferences.Editor editor = mPreferences.edit();
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if(message.startsWith("_Val:")) {
                     msg = message.substring(5);
+                    float alcVal = Float.parseFloat(msg);
+                    editor.putFloat("AlcLevel_Promillometer", alcVal).commit();
                     tv_value.setText(msg + " Promille\n");
                 }
-                if(message.startsWith("_Preheat:")){
+                else if(message.startsWith("_Preheat:")){
                     msg = message.substring(9);
                     tv_value.setText("Promillometer heizt sich auf.\nBitte warte noch " + msg + " Sekunden\n");
                 }
-                if(message.startsWith("_Blow:")){
+                else if(message.startsWith("_Blow:")){
                     msg = message.substring(6);
                     tv_value.setText("Bitte noch " + msg + " Sekunden blasen!\n");
                 }else {
@@ -151,11 +165,24 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
 
     @Override
     public void onClick(View view) {
+        SharedPreferences mPreferences = getActivity().getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
+        SharedPreferences.Editor editor = mPreferences.edit();
         switch(view.getId()){
             case (R.id.promillometer_restart_Bt):{
                 byte[] b = {0,0,0}; //000 Code for Restart
                 arduino.send(b);
             }
+            case (R.id.promillometer_save_Bt):{
+                editor.putFloat("AlcLevel", mPreferences.getFloat("AlcLevel_Promillometer", 0)).commit();
+                editor.putLong("lastUpdateTime", System.currentTimeMillis()).commit();
+                double soberInMinutes = (mPreferences.getFloat("AlcLevel_Promillometer",0) / 0.15) * 60;
+                Calendar cal = Calendar.getInstance(); //time now
+                cal.add(Calendar.MINUTE, (int) soberInMinutes); //time when you are sober
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy  HH:mm");
+                soberTimeTv.setText(dateFormat.format(cal.getTime()));
+                editor.putString("soberTimeTv", dateFormat.format(cal.getTime())).commit();
+            }
+
         }
     }
 
