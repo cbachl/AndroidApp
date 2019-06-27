@@ -9,64 +9,92 @@
 
 
     <ImageView
-        android:id="@+id/welcome_screen_ueberschrift"
-        android:layout_width="0dp"
+        android:id="@+id/welcome_screen_label"
+        android:layout_width="403dp"
         android:layout_height="112dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/ueberschrift"
+        app:layout_constraintBottom_toTopOf="@+id/welcome_screen_beerFoam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/welcome_screen_beerStrich1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
-        app:layout_constraintEnd_toStartOf="@+id/welcome_screen_beerStrich3"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_screen_ueberschrift"
-        app:srcCompat="@drawable/bierstrich1" />
+        android:id="@+id/welcome_screen_beerStrokeOne"
+        android:layout_width="40dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="119dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="170dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/welcome_screen_beerStrokeTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_screen_beerFoam"
+        app:srcCompat="@drawable/beerstrokeone" />
 
     <ImageView
-        android:id="@+id/welcome_screen_beerStrich2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/welcome_screen_bierHenkel"
-        app:layout_constraintTop_toTopOf="@+id/welcome_screen_beerStrich3"
-        app:srcCompat="@drawable/bierstrich2" />
+        android:id="@+id/welcome_screen_beerStrokeTwo"
+        android:layout_width="40dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/welcome_screen_beerStrokeThree"
+        app:layout_constraintStart_toEndOf="@+id/welcome_screen_beerStrokeOne"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_screen_beerFoam"
+        app:srcCompat="@drawable/beerstroketwo" />
 
     <ImageView
-        android:id="@+id/welcome_screen_beerStrich3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/welcome_screen_beerStrokeThree"
+        android:layout_width="40dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/welcome_screen_beerStrokeFour"
+        app:layout_constraintStart_toEndOf="@+id/welcome_screen_beerStrokeTwo"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_screen_beerFoam"
+        app:srcCompat="@drawable/beerstrokethree" />
+
+    <ImageView
+        android:id="@+id/welcome_screen_beerStrokeFour"
+        android:layout_width="40dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="170dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/welcome_screen_beerHandle"
+        app:layout_constraintStart_toEndOf="@+id/welcome_screen_beerStrokeThree"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_screen_beerFoam"
+        app:srcCompat="@drawable/beerstrokefour" />
+
+    <ImageView
+        android:id="@+id/welcome_screen_beerHandle"
+        android:layout_width="71dp"
+        android:layout_height="112dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.592"
+        app:srcCompat="@drawable/beerhandle" />
+
+    <ImageView
+        android:id="@+id/welcome_screen_beerFoam"
+        android:layout_width="251dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/welcome_screen_beerStrich1"
-        app:srcCompat="@drawable/bierstrich3" />
-
-    <ImageView
-        android:id="@+id/welcome_screen_bierHenkel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginBottom="29dp"
-        app:layout_constraintBottom_toBottomOf="@+id/welcome_screen_beerStrich2"
-        app:layout_constraintStart_toEndOf="@+id/welcome_screen_beerStrich3"
-        app:srcCompat="@drawable/bierhenkel" />
-
-    <ImageView
-        android:id="@+id/welcome_screen_bierschaum"
-        android:layout_width="151dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="7dp"
-        app:layout_constraintBottom_toTopOf="@+id/welcome_screen_beerStrich1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_screen_ueberschrift"
-        app:srcCompat="@drawable/bierschaum" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_screen_label"
+        app:srcCompat="@drawable/beerfoam" />
 
 </android.support.constraint.ConstraintLayout>

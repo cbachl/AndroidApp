@@ -22,9 +22,9 @@ public class Splash_Screen_Welcome extends AppCompatActivity {
     private String logTag = "Promillometer";
 
 
-    ImageView beerstrich1,beerstrich2,beerstrich3,beerhenkel,beerschaum;
-    ImageView ueberschrift;
-    Animation fromtop1,fromtoptxt,fromtop2,fromtop3,fromtop,fromtop4;
+    ImageView beer_stroke_one, beer_stroke_two, beer_stroke_three, beer_stroke_four,beer_handle, beer_foam;
+    ImageView label;
+    Animation fromtop1,fromtoptxt,fromtop2,fromtop3,fromtop,fromtop4,fromtop5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +32,14 @@ public class Splash_Screen_Welcome extends AppCompatActivity {
         setContentView(R.layout.welcome_screen);
 
 
-        ueberschrift = (ImageView) findViewById(R.id.welcome_screen_ueberschrift);
+        label = (ImageView) findViewById(R.id.welcome_screen_label);
 
-        beerstrich1 = (ImageView)findViewById(R.id.welcome_screen_beerStrich1);
-        beerstrich2 = (ImageView)findViewById(R.id.welcome_screen_beerStrich2);
-        beerstrich3 = (ImageView)findViewById(R.id.welcome_screen_beerStrich3);
-        beerhenkel = (ImageView)findViewById(R.id.welcome_screen_bierHenkel);
-        beerschaum = (ImageView)findViewById(R.id.welcome_screen_bierschaum);
+        beer_stroke_one = (ImageView)findViewById(R.id.welcome_screen_beerStrokeOne);
+        beer_stroke_two = (ImageView)findViewById(R.id.welcome_screen_beerStrokeTwo);
+        beer_stroke_three = (ImageView)findViewById(R.id.welcome_screen_beerStrokeThree);
+        beer_stroke_four = (ImageView)findViewById(R.id.welcome_screen_beerStrokeFour);
+        beer_handle = (ImageView)findViewById(R.id.welcome_screen_beerHandle);
+        beer_foam = (ImageView)findViewById(R.id.welcome_screen_beerFoam);
 
 
 
@@ -49,14 +50,16 @@ public class Splash_Screen_Welcome extends AppCompatActivity {
         fromtop2 =AnimationUtils.loadAnimation(this,R.anim.strocke_three_icon);
         fromtop3 =AnimationUtils.loadAnimation(this,R.anim.handle_icon);
         fromtop4 =AnimationUtils.loadAnimation(this,R.anim.foam_icon);
+        fromtop5 = AnimationUtils.loadAnimation(this,R.anim.stroke_four_icon);
 
 
-        ueberschrift.setAnimation(fromtoptxt);
-        beerstrich1.setAnimation(fromtop);
-        beerstrich2.setAnimation(fromtop1);
-        beerstrich3.setAnimation(fromtop2);
-        beerhenkel.setAnimation(fromtop3);
-        beerschaum.setAnimation(fromtop4);
+        label.setAnimation(fromtoptxt);
+        beer_stroke_one.setAnimation(fromtop);
+        beer_stroke_two.setAnimation(fromtop1);
+        beer_stroke_three.setAnimation(fromtop2);
+        beer_handle.setAnimation(fromtop3);
+        beer_foam.setAnimation(fromtop4);
+        beer_stroke_four.setAnimation(fromtop5);
 
 
 
@@ -97,7 +100,7 @@ public class Splash_Screen_Welcome extends AppCompatActivity {
         Thread timer = new Thread(){
             public void run(){
                 try {
-                    sleep(4000);
+                    sleep(5000);
 
                 }catch (InterruptedException e){
                     e.printStackTrace();
