@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,9 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import android.widget.Toast;
@@ -26,6 +30,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -98,15 +103,36 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         s = s.replace("{", "");
         s = s.replace("}", "");
         String[] stringArray = s.split(", ");
+
+        List<Pair> drinkPairs = new ArrayList<Pair>();
+
+
+
         final List<String> name_list = new ArrayList<>();
         for (int i = 0; i < stringArray.length; i++) {
             String[] drink = stringArray[i].split("=");
             String drinkName = drink[0];
             double val = Double.parseDouble(drink[1]);
+
+            Pair pair = new Pair(val,drinkName);
+            drinkPairs.add(pair);
+        }
+        //Sort the drinkList
+        Collections.sort(drinkPairs, (a, b) -> {
+            double val1 = (double) a.first;
+            double val2 = (double) b.first;
+            int result = (int) ((val1 - val2)*1000);
+            return result;
+        });
+        for(int i = 0; i < drinkPairs.size(); i++){
+            Pair p = drinkPairs.get(i);
+            double val = (double) p.first;
+            String drinkName = (String) p.second;
             drinks.add(new SpinnerDataDrinks(val, drinkName));
             name_list.add(drinkName);
         }
 
+        //display the drinks in the spinner
         CustomSpinnerAdapterDrinks DrinkSpinnerAdapter =
                 new CustomSpinnerAdapterDrinks(getActivity(), R.layout.spinneritemdrinks, drinks);
         DrinkSpinner.setAdapter(DrinkSpinnerAdapter);
