@@ -59,17 +59,15 @@
 
     <Button
         android:id="@+id/button_fragment_calc_hinzufü"
-        android:layout_width="148dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        style="@android:style/Widget.DeviceDefault.Button"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
 
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="39dp"
-        android:background="@color/nav_toolbar_grey"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="72dp"
         android:text="Hinzufügen"
         android:textColor="@color/nav_toolbar_white"
-        app:layout_constraintEnd_toStartOf="@+id/button_clear_result"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_volume" />
 
@@ -132,15 +130,16 @@
 
     <Button
         android:id="@+id/button_clear_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@android:style/Widget.DeviceDefault.Button"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
         android:layout_marginStart="39dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="54dp"
-        android:background="@color/nav_toolbar_grey"
         android:text="CLEAR"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toEndOf="@+id/button_fragment_calc_hinzufü"
         app:layout_constraintTop_toBottomOf="@+id/spinner_drinks_fragment_calculation" />
 
