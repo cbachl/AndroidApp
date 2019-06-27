@@ -46,6 +46,7 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
         tv_connected = view.findViewById(R.id.promillometer_connected_Tv);
         tv_connected.setText("Verbunden: NEIN");
         tv_value = view.findViewById(R.id.promillometer_value_Tv);
+        tv_value.setText("");
 
         if(connected){
 
@@ -59,8 +60,7 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
         b.setOnClickListener(this);
 
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_promillometer, container, false);
+        return view;
     }
 
 
