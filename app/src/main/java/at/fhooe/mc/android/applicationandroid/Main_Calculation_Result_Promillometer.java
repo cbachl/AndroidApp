@@ -2,7 +2,9 @@
 package at.fhooe.mc.android.applicationandroid;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +77,7 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         loadData();
         updateAlcValue();
 
-        arrayList = new ArrayList<>();
+
         adapter = new ArrayAdapter<>(getActivity(), R.layout.list_item, R.id.textItemSpinner, arrayList);
         lastDrinksLv.setAdapter(adapter);
         lastDrinksListCounter = 0;
@@ -83,6 +85,9 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
 
         SharedPreferences mPreferences = getActivity().getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
         SharedPreferences.Editor editor = mPreferences.edit();
+        alcoholLevelTv.setText(mPreferences.getString("alcoholLevelTv", "0,0"));
+        soberTimeTv.setText(mPreferences.getString("soberTimeTv", ""));
+
 
 
         // --------------------------- Drinks Spinner ---------------------------
@@ -192,8 +197,12 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
     @Override
     public void onResume() {
         super.onResume();
+        SharedPreferences mPreferences = getActivity().getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
+        SharedPreferences.Editor editor = mPreferences.edit();
         //refresh Alc Value when reopening the App
         updateAlcValue();
+        alcoholLevelTv.setText(mPreferences.getString("alcoholLevelTv", "0,0"));
+        soberTimeTv.setText(mPreferences.getString("soberTimeTv", ""));
     }
 
     @Override
@@ -210,6 +219,13 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
 
         if (gew.isEmpty() || geb.equals("") || größ.equals("") || mPreferences.getInt("LastClickGenderSpinner", 0) == 0) {
             Toast.makeText(getActivity(), "Alle Felder im Tab 'Account' müssen ausgefüllt sein!", Toast.LENGTH_SHORT).show();
+
+            //Fragment fragment = new Main_Account_Promillometer();
+           // FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            //fragmentTransaction.replace(R.id.main_frameLayoutA, fragment);
+            //fragmentTransaction.commit();
+
+
         } else {
             float weight = Float.parseFloat(gew);
             double soberInMinutes, temporaryNumber;
@@ -242,10 +258,12 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
                 // ----------------------------------------------------------------------
                 if (ButtonClicked == 0 && mPreferences.getInt("buttonState", 0) == 0) {
                     alcoholLevelTv.setText(String.format("%.2g%n", result));
+                    editor.putString("alcoholLevelTv", String.format("%.2g%n", result)).commit();
                     editor.putFloat("AlcLevel", result).commit();
                 } else {
                     result = mPreferences.getFloat("AlcLevel", 0.0f) + result;
                     alcoholLevelTv.setText(String.format("%.2g%n", result));
+                    editor.putString("alcoholLevelTv", String.format("%.2g%n", result)).commit();
                     editor.putFloat("AlcLevel", result).commit();
                 }
                 soberInMinutes = (result / 0.15) * 60; //time to be sober in minutes
@@ -257,6 +275,7 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
                 cal.add(Calendar.MINUTE, (int) soberInMinutes); //time when you are sober
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy  HH:mm");
                 soberTimeTv.setText(dateFormat.format(cal.getTime()));
+                editor.putString("soberTimeTv", dateFormat.format(cal.getTime())).commit();
                 editor.putString(getString(R.string.time), soberTimeTv.getText().toString()).commit();
 
 
@@ -266,7 +285,7 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
                 adapter.notifyDataSetChanged();
                 lastDrinksListCounter++;
                 //Save List
-                saveDate();
+                saveData();
 
             }
         }
@@ -275,7 +294,6 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         if (v.getId() == R.id.button_clear_result) {
             reset();
         }
-        saveDate();
         //save Button State
         editor.putInt("buttonState", ButtonClicked).commit();
         //save AlcLevel
@@ -295,22 +313,21 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         if(oldAlcLevel - alcDifference <=0){
             editor.putFloat("AlcLevel", 0.0f).commit();
             soberTimeTv.setText("");
+            editor.putString("soberTimeTv", "").commit();
         } else {
             editor.putFloat("AlcLevel", oldAlcLevel - alcDifference).commit();
         }
 
         Float Result = mPreferences.getFloat("AlcLevel", 0);
 
-            //print time and alc value
-            //alcoholLevelTv.setText(Result.toString());
             alcoholLevelTv.setText(String.format("%.2g%n", Result));
-            String Time = mPreferences.getString(getString(R.string.time), "");
+            String Time = mPreferences.getString("soberTimeTv", "");
             soberTimeTv.setText(Time);
             editor.putLong("lastUpdateTime", System.currentTimeMillis()).commit();
 
     }
 
-    public void saveDate() {
+    public void saveData() {
         SharedPreferences mPreferences = getActivity().getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
         SharedPreferences.Editor editor = mPreferences.edit();
         Gson gson = new Gson();
@@ -320,11 +337,9 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
 
     public void loadData() {
         SharedPreferences mPreferences = getActivity().getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
-        SharedPreferences.Editor editor = mPreferences.edit();
         Gson gson = new Gson();
         String json = mPreferences.getString("listAlcohol", null);
-        Type type = new TypeToken<ArrayList<String>>() {
-        }.getType();
+        Type type = new TypeToken<ArrayList<String>>(){}.getType();
         arrayList = gson.fromJson(json, type);
         if (arrayList == null) {
             arrayList = new ArrayList<>();
@@ -337,7 +352,9 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         //clear TextViews
         ButtonClicked = 0;
         alcoholLevelTv.setText("");
+        editor.putString("alcoholLevelTv", "").commit();
         soberTimeTv.setText("");
+        editor.putString("soberTimeTv", "").commit();
         editor.putFloat("AlcLevel", 0).commit();
 
         //clear lastDrinks
@@ -346,5 +363,6 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
             adapter.notifyDataSetChanged();
             item--;
         }
+        saveData();
     }
 }
