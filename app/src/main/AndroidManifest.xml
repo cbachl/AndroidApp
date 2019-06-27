@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="at.fhooe.mc.android.applicationandroid">
 
     <application
+        tools:replace="android:label"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_logo_promillometer_round"
+        android:icon="@mipmap/app_logo"
         android:label="Promillometer"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/app_logo_round"
         android:supportsRtl="true"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">

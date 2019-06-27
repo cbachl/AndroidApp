@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mMainFrame = (FrameLayout) findViewById(R.id.main_frameLayoutA);
         mMainNav = (BottomNavigationView) findViewById(R.id.main_nav_bar);
         berechnen_toolbar = new Main_Calculation_Result_Promillometer();
-        // promillometer_toolbar = new Main_Promillometer_Start_Screen();
+        promillometer_toolbar = new Main_Promillometer_Start_Screen();
         mainAccount = new Main_Account_Promillometer();
 
 
@@ -67,11 +67,10 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(berechnen_toolbar);
                         return true;
 
-                    // case R.id.nav_tool_Promillometer:
-                    // mMainNav.setItemBackgroundResource(R.color.myColorBlack);
-                    //setFragment(promillometer_toolbar);
-
-                    //return true;
+                    case R.id.nav_tool_Promillometer:
+                    mMainNav.setItemBackgroundResource(R.color.myColorBlack);
+                    setFragment(promillometer_toolbar);
+                    return true;
 
                     case R.id.nav_tool_account:
                         mMainNav.setItemBackgroundResource(R.color.myColorBlack);
