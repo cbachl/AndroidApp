@@ -82,9 +82,9 @@ public class Main_Account_Promillometer extends Fragment implements View.OnClick
         GenderSpinner = (Spinner)view.findViewById(R.id.spinner_male_female);
 
         final List<SpinnerData>CustomList= new ArrayList<>();
-        CustomList.add(new SpinnerData(R.drawable.gender,"Choose gender"));
-        CustomList.add(new SpinnerData(R.drawable.gender_spinner_male,"Male         "));
-        CustomList.add(new SpinnerData(R.drawable.gender_spinner_female,"Female       "));
+        CustomList.add(new SpinnerData(R.drawable.gender,"Auswählen"));
+        CustomList.add(new SpinnerData(R.drawable.gender_spinner_male,"Männlich         "));
+        CustomList.add(new SpinnerData(R.drawable.gender_spinner_female,"Weiblich       "));
 
         CustomSpinnerAdapter customSpinnerAdapter =
                 new CustomSpinnerAdapter(getActivity(),R.layout.spinneritem,CustomList);
@@ -124,7 +124,7 @@ public class Main_Account_Promillometer extends Fragment implements View.OnClick
     public void onClick(View v){
         if(v.getId()==R.id.button) {
 
-            Toast.makeText(getActivity(),"Saved Data",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Daten gespeichert!",Toast.LENGTH_SHORT).show();
 
             //save geb
             String geburtsdatum = mGeburtstag.getText().toString();
