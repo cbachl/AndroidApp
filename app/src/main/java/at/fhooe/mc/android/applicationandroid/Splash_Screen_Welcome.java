@@ -2,6 +2,7 @@ package at.fhooe.mc.android.applicationandroid;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.VideoView;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -22,44 +25,16 @@ public class Splash_Screen_Welcome extends AppCompatActivity {
     private String logTag = "Promillometer";
 
 
-    ImageView beer_stroke_one, beer_stroke_two, beer_stroke_three, beer_stroke_four,beer_handle, beer_foam;
-    ImageView label;
-    Animation fromtop1,fromtoptxt,fromtop2,fromtop3,fromtop,fromtop4,fromtop5;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_screen);
 
 
-        label = (ImageView) findViewById(R.id.welcome_screen_label);
-
-        beer_stroke_one = (ImageView)findViewById(R.id.welcome_screen_beerStrokeOne);
-        beer_stroke_two = (ImageView)findViewById(R.id.welcome_screen_beerStrokeTwo);
-        beer_stroke_three = (ImageView)findViewById(R.id.welcome_screen_beerStrokeThree);
-        beer_stroke_four = (ImageView)findViewById(R.id.welcome_screen_beerStrokeFour);
-        beer_handle = (ImageView)findViewById(R.id.welcome_screen_beerHandle);
-        beer_foam = (ImageView)findViewById(R.id.welcome_screen_beerFoam);
-
-
-
-        fromtoptxt = AnimationUtils.loadAnimation(this,R.anim.head_promillometer_text_icon);
-
-        fromtop =AnimationUtils.loadAnimation(this,R.anim.stroke_one_icon);
-        fromtop1 =AnimationUtils.loadAnimation(this,R.anim.stroke_two_icon);
-        fromtop2 =AnimationUtils.loadAnimation(this,R.anim.strocke_three_icon);
-        fromtop3 =AnimationUtils.loadAnimation(this,R.anim.handle_icon);
-        fromtop4 =AnimationUtils.loadAnimation(this,R.anim.foam_icon);
-        fromtop5 = AnimationUtils.loadAnimation(this,R.anim.stroke_four_icon);
-
-
-        label.setAnimation(fromtoptxt);
-        beer_stroke_one.setAnimation(fromtop);
-        beer_stroke_two.setAnimation(fromtop1);
-        beer_stroke_three.setAnimation(fromtop2);
-        beer_handle.setAnimation(fromtop3);
-        beer_foam.setAnimation(fromtop4);
-        beer_stroke_four.setAnimation(fromtop5);
+        VideoView view = (VideoView)findViewById(R.id.VideoView);
+        String path = "android.resource://" + getPackageName() + "/" + at.fhooe.mc.android.applicationandroid.R.raw.splashscreen;
+        view.setVideoURI(Uri.parse(path));
+        view.start();
 
 
 
@@ -97,6 +72,10 @@ public class Splash_Screen_Welcome extends AppCompatActivity {
 
 
         }
+
+
+
+
 
 
 
