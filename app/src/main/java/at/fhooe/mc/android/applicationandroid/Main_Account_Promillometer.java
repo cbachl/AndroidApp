@@ -82,9 +82,9 @@ public class Main_Account_Promillometer extends Fragment implements View.OnClick
         GenderSpinner = (Spinner)view.findViewById(R.id.spinner_male_female);
 
         final List<SpinnerData>CustomList= new ArrayList<>();
-        CustomList.add(new SpinnerData(R.drawable.gender,"Auswählen"));
-        CustomList.add(new SpinnerData(R.drawable.gender_spinner_male,"Männlich         "));
-        CustomList.add(new SpinnerData(R.drawable.gender_spinner_female,"Weiblich       "));
+        CustomList.add(new SpinnerData(R.drawable.gender_spinner_blank,"Auswählen"));
+        CustomList.add(new SpinnerData(R.drawable.gender_spinner_male,"Männlich"));
+        CustomList.add(new SpinnerData(R.drawable.gender_spinner_female,"Weiblich"));
 
         CustomSpinnerAdapter customSpinnerAdapter =
                 new CustomSpinnerAdapter(getActivity(),R.layout.spinneritem,CustomList);

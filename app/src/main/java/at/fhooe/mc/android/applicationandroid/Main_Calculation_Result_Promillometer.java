@@ -43,7 +43,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class Main_Calculation_Result_Promillometer extends Fragment implements View.OnClickListener {
 
     static TextView alcoholLevelTv;
-    static TextView soberTimeTv;
+    static TextView soberTimeTv, soberTimeTvHeader;
     Button addBt, clearBt, clearAccountBt;
     Float result;
     static int ButtonClicked = 0, item;
@@ -77,6 +77,7 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         addBt = calcView.findViewById(R.id.button_fragment_calc_hinzufü);
         clearBt = calcView.findViewById(R.id.button_clear_result);
         soberTimeTv = calcView.findViewById(R.id.textview_nuechtern_um);
+        soberTimeTvHeader = calcView.findViewById(R.id.textView_nuechternUm_header);
         lastDrinksLv = calcView.findViewById(R.id.listDrinks);
         addBt.setOnClickListener(this);
         clearBt.setOnClickListener(this);
@@ -86,29 +87,15 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         loadData();
         updateAlcValue();
 
-        //Update every 10 minutes
-        Handler h = new Handler();
-        new Thread(new Runnable() {
-            public void run() {
-                while (true) {
-                    try {
-                        h.post(new Runnable() {
-                            public void run() {
-                                updateAlcValue();
-                            }
-                        });
-                        TimeUnit.MINUTES.sleep(10);
-                    } catch (Exception ex) {
-                    }
-                }
-            }
-        }).start();
-
-
-
 
 
         adapter = new ArrayAdapter<>(getActivity(), R.layout.list_item, R.id.textItemSpinner, arrayList);
+        // Add a header to the ListView
+
+        ViewGroup header = (ViewGroup)inflater.inflate(R.layout.listview_header,lastDrinksLv,false);
+        lastDrinksLv.addHeaderView(header);
+
+
         lastDrinksLv.setAdapter(adapter);
         lastDrinksListCounter = 0;
 
@@ -248,12 +235,8 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences mPreferences = getActivity().getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
-        SharedPreferences.Editor editor = mPreferences.edit();
         //refresh Alc Value when reopening the App
         updateAlcValue();
-        alcoholLevelTv.setText(mPreferences.getString("alcoholLevelTv", "0,0"));
-        soberTimeTv.setText(mPreferences.getString("soberTimeTv", ""));
     }
 
     @Override
@@ -348,6 +331,7 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         //save Button State
         editor.putInt("buttonState", ButtonClicked).commit();
         //save AlcLevel
+        updateAlcValue();
     }
 
 
@@ -368,13 +352,22 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         } else {
             editor.putFloat("AlcLevel", oldAlcLevel - alcDifference).commit();
         }
+        if(mPreferences.getString("soberTimeTv","").equals("")){
+            soberTimeTvHeader.setText("");
+        } else {
+            soberTimeTvHeader.setText("Nüchtern um");
+        }
 
         Float Result = mPreferences.getFloat("AlcLevel", 0);
+        alcoholLevelTv.setText(String.format("%.2g", Result)+ " ‰");
+        String Time = mPreferences.getString("soberTimeTv", "");
+        soberTimeTv.setText(Time);
+        editor.putLong("lastUpdateTime", System.currentTimeMillis()).commit();
 
-            alcoholLevelTv.setText(String.format("%.2g%n", Result));
-            String Time = mPreferences.getString("soberTimeTv", "");
-            soberTimeTv.setText(Time);
-            editor.putLong("lastUpdateTime", System.currentTimeMillis()).commit();
+
+        if(mPreferences.getFloat("AlcLevel",0) >= 0.6){
+            Toast.makeText(getActivity(), "Achtung! du hast über 0,5 Promille. Bitte lenke kein Fahrzeug mehr!", Toast.LENGTH_LONG).show();
+        }
 
     }
 

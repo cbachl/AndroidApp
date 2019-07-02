@@ -7,14 +7,13 @@ android:layout_height="match_parent"
     >
 
     <TextView
-        android:id="@+id/textItemSpinner"
+        android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#373735"
         android:padding="10dp"
-        android:text="TEST"
+        android:text="Letzte Getränke:"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textColorHighlight="#F9B233"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 </LinearLayout>

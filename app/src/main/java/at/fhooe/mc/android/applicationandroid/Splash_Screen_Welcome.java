@@ -63,33 +63,40 @@ public class Splash_Screen_Welcome extends AppCompatActivity {
 
 
 
-//Firebase Test
+        SharedPreferences mPreferences = getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
+        SharedPreferences.Editor editor = mPreferences.edit();
+        long lastUpdate = mPreferences.getLong("lastFirebaseUpdate", System.currentTimeMillis());
+        long now = System.currentTimeMillis();
 
-        DocumentReference docRef = db.collection("all").document("drinks");
-        Source source = Source.SERVER;
-        docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    // Document found in the offline cache
-                    DocumentSnapshot document = task.getResult();
-                    Log.d(logTag, "Cached document data: " + document.getData());
-                    String s = "" + document.getData();
-                    SharedPreferences prefs = getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = getSharedPreferences("myDatabaseAccount", MODE_PRIVATE).edit();
-                    editor.putString("drinks_local", s);
-                    editor.commit();
-                } else {
-                    Log.d(logTag, "Cached get failed: ", task.getException());
+        boolean firstRun = mPreferences.getBoolean("firstRun",true);
+
+        if(firstRun == true || now - lastUpdate >= 86400000) { //update only every day
+
+
+            DocumentReference docRef = db.collection("all").document("drinks");
+            Source source = Source.SERVER;
+            docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        // Document found in the offline cache
+                        DocumentSnapshot document = task.getResult();
+                        Log.d(logTag, "Cached document data: " + document.getData());
+                        String s = "" + document.getData();
+                        SharedPreferences prefs = getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = getSharedPreferences("myDatabaseAccount", MODE_PRIVATE).edit();
+                        editor.putString("drinks_local", s).commit();
+                        editor.putBoolean("firstRun", false).commit();
+                        editor.putLong("lastFirebaseUpdate", System.currentTimeMillis()).commit();
+
+                    } else {
+                        Log.d(logTag, "Cached get failed: ", task.getException());
+                    }
                 }
-            }
-        });
+            });
 
 
-
-
-
-
+        }
 
 
 
