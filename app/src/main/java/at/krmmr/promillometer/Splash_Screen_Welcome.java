@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.VideoView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,8 +30,17 @@ public class Splash_Screen_Welcome extends AppCompatActivity {
         setContentView(R.layout.welcome_screen);
 
 
+        //set status bar color
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getResources().getColor(R.color.mySplashScreenColor));
+
+
+
+        //set splashscreen video
         VideoView view = (VideoView)findViewById(R.id.VideoView);
-        String path = "android.resource://" + getPackageName() + "/" + at.krmmr.promillometer.R.raw.splashscreen;
+        String path = "android.resource://" + getPackageName() + "/" + R.raw.splashscreenblack;
         view.setVideoURI(Uri.parse(path));
         view.start();
 

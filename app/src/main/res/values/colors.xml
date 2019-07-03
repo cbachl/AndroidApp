@@ -5,7 +5,7 @@
     <color name="colorAccent">#F9B233</color>
     <color name="myColorBlack">#373735</color>
     <color name="myColorOrange">#F9B233</color>
-
+    <color name="mySplashScreenColor">#000000</color>
     <color name="nav_toolbar_white">#FFFFFF</color>
     <color name="nav_toolbar_grey">#5E5E5D</color>
 </resources>
