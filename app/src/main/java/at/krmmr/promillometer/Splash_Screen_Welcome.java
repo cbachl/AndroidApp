@@ -1,4 +1,4 @@
-package at.fhooe.mc.android.applicationandroid;
+package at.krmmr.promillometer;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,9 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.VideoView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,7 +29,7 @@ public class Splash_Screen_Welcome extends AppCompatActivity {
 
 
         VideoView view = (VideoView)findViewById(R.id.VideoView);
-        String path = "android.resource://" + getPackageName() + "/" + at.fhooe.mc.android.applicationandroid.R.raw.splashscreen;
+        String path = "android.resource://" + getPackageName() + "/" + at.krmmr.promillometer.R.raw.splashscreen;
         view.setVideoURI(Uri.parse(path));
         view.start();
 

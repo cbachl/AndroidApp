@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="at.fhooe.mc.android.applicationandroid">
+    package="at.krmmr.promillometer">
 
     <application
         tools:replace="android:label"
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Splash_Screen_Welcome"
+        <activity android:name="at.krmmr.promillometer.Splash_Screen_Welcome"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name="at.krmmr.promillometer.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

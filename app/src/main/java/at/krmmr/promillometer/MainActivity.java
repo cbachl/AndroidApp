@@ -1,4 +1,4 @@
-package at.fhooe.mc.android.applicationandroid;
+package at.krmmr.promillometer;
 
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -8,9 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {

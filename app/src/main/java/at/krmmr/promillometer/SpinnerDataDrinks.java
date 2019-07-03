@@ -1,4 +1,4 @@
-package at.fhooe.mc.android.applicationandroid;
+package at.krmmr.promillometer;
 
 public class SpinnerDataDrinks {
     private String DrinkName;

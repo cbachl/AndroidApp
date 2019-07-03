@@ -1,11 +1,9 @@
 
-package at.fhooe.mc.android.applicationandroid;
+package at.krmmr.promillometer;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +19,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 
 import android.widget.Toast;
@@ -31,8 +27,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.MODE_PRIVATE;
 

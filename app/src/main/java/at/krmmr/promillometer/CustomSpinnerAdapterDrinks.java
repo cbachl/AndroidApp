@@ -1,4 +1,4 @@
-package at.fhooe.mc.android.applicationandroid;
+package at.krmmr.promillometer;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

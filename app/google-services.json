@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:524190728056:android:3c2aa0e41d76267f",
+        "android_client_info": {
+          "package_name": "at.fhhoe.mc.promillometer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524190728056-0k92q913dheop3gm8ss34ba9vtkpjgln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfk3oUh38F2bqg2ho9yFidhOc5aa2HkL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524190728056-0k92q913dheop3gm8ss34ba9vtkpjgln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:524190728056:android:f3f5866b9524a359",
         "android_client_info": {
           "package_name": "at.fhooe.mc.android.applicationandroid"
@@ -20,6 +49,14 @@
           "android_info": {
             "package_name": "at.fhooe.mc.android.applicationandroid",
             "certificate_hash": "b74e7fd3bfac542a556f796962199dccd50be286"
+          }
+        },
+        {
+          "client_id": "524190728056-dh9b7vll5d1r1t9rca3msj3nsp88g6t9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "at.fhooe.mc.android.applicationandroid",
+            "certificate_hash": "396eb67b2fdb2cd9f310d9f2e3ba3ed5b98c9fb0"
           }
         },
         {
@@ -64,6 +101,43 @@
           "client_type": 1,
           "android_info": {
             "package_name": "at.fhooe.mc.android.promillometer",
+            "certificate_hash": "396eb67b2fdb2cd9f310d9f2e3ba3ed5b98c9fb0"
+          }
+        },
+        {
+          "client_id": "524190728056-0k92q913dheop3gm8ss34ba9vtkpjgln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfk3oUh38F2bqg2ho9yFidhOc5aa2HkL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524190728056-0k92q913dheop3gm8ss34ba9vtkpjgln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524190728056:android:1371dabb7c9e5e1a",
+        "android_client_info": {
+          "package_name": "at.krmmr.promillometer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524190728056-8ccohfk3gjn1dga7disace1qdc7t4gn9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "at.krmmr.promillometer",
             "certificate_hash": "396eb67b2fdb2cd9f310d9f2e3ba3ed5b98c9fb0"
           }
         },

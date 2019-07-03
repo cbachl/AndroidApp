@@ -1,4 +1,4 @@
-package at.fhooe.mc.android.applicationandroid;
+package at.krmmr.promillometer;
 
 
 import android.content.SharedPreferences;
@@ -20,7 +20,7 @@ import me.aflak.arduino.Arduino;
 import me.aflak.arduino.ArduinoListener;
 
 import static android.content.Context.MODE_PRIVATE;
-import static at.fhooe.mc.android.applicationandroid.Main_Calculation_Result_Promillometer.soberTimeTv;
+import static at.krmmr.promillometer.Main_Calculation_Result_Promillometer.soberTimeTv;
 
 
 /**
