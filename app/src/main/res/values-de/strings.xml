@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="save">Speichern</string>
+    <string name="clear">Löschen</string>
+    <string name="add">Hinzufügen</string>
+    <string name="new_measure">Neue Messung</string>
+
+    <string name="age">Alter</string>
+    <string name="weight">Gewicht</string>
+    <string name="size">Größe</string>
+    <string name="gender">Geschlecht</string>
+
+    <string name="age_years">(Jahren)</string>
+    <string name="weight_kg">(kg)</string>
+    <string name="size_cm">(cm)</string>
+
+    <string name="account_attention">Die berechneten Werte sind nur Richtwerte! Bitte fahre nie mit dem Auto unter Alkoholeinfluss. Promillometer haftet für keine falsch berechneten Werte.</string>
+
+    <string name="data_saved">Daten gespeichert!</string>
+
+    //Promillometer
+    <string name="promillometer_connected_no">Verbunden: NEIN</string>
+    <string name="promillometer_connected_yes">Verbunden: JA</string>
+    <string name="promillometer_permission_retry">Du musst die Erlaubnis erteilen, \\nsonst kann die App nicht funktionieren... \\nNeue Anfrage in 3 Sekunden</string>
+    <string name="promillometer_preheating">Promillometer heizt sich auf.\\nBitte warte noch</string>
+    <string name="seconds">Sekunden</string>
+    <string name="promillometer_promille">Promille\\n</string>
+    <string name="promillometer_pleaseblow">Bitte noch</string>
+    <string name="promillometer_pleaseblowseconds">Sekunden blasen!\\n</string>
+    <string name="promillometer_undefinedstatus">Undefinierter Status:</string>
+    <string name="promillometer_pleaseconnect">Stecke den Promillometer in dein Smartphone</string>
+    <string name="promillometer_value">Alkoholwert</string>
+
+
+    //Account
+    <string name="account_choosegender">Auswählen:</string>
+    <string name="account_gender_male">Männlich</string>
+    <string name="account_gender_female">Weiblich</string>
+
+
+    //Calculation
+    <string name="calculation_calculatedvalue">Berechneter Alkoholwert</string>
+    <string name="calculation_soberat">Nüchtern um</string>
+    <string name="calculation_choosedrink">Getränk auswählen</string>
+    <string name="calculation_everythingmustbefilled">"Alle Felder im Tab 'Account' müssen ausgefüllt sein!"</string>
+    <string name="calculation_attention">"Achtung! du hast über 0,5 Promille. Bitte lenke kein Fahrzeug mehr!"</string>
+    <string name="calculation_last_drinks">Letzte Getränke:</string>
+
+
+
+
+</resources>

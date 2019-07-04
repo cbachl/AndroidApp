@@ -36,8 +36,7 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class Main_Calculation_Result_Promillometer extends Fragment implements View.OnClickListener {
 
-    static TextView alcoholLevelTv;
-    static TextView soberTimeTv, soberTimeTvHeader;
+    static TextView alcoholLevelTv, soberTimeTv, soberTimeTvHeader;
     Button addBt, clearBt, clearAccountBt;
     Float result;
     static int ButtonClicked = 0, item;
@@ -49,9 +48,6 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
     List<SpinnerDataDrinks> drinks;
 
     Spinner DrinkSpinner, volumeSpinner;
-
-    Handler h;
-
 
 
 
@@ -77,10 +73,8 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         clearBt.setOnClickListener(this);
 
 
-
         loadData();
         updateAlcValue();
-
 
 
         adapter = new ArrayAdapter<>(getActivity(), R.layout.list_item, R.id.textItemSpinner, arrayList);
@@ -241,17 +235,13 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
     public void calculateAlcoholLevel(View v) {
         SharedPreferences mPreferences = getActivity().getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
         SharedPreferences.Editor editor = mPreferences.edit();
-        String geb = mPreferences.getString(getString(R.string.gebDatum), "0");
-        String gew = mPreferences.getString(getString(R.string.gewicht), "0");
-        String größ = mPreferences.getString(getString(R.string.größe), "0");
+        String geb = mPreferences.getString("age", "0");
+        String gew = mPreferences.getString("weight", "0");
+        String größ = mPreferences.getString("size", "0");
 
         if (gew.isEmpty() || geb.equals("") || größ.equals("") || mPreferences.getInt("LastClickGenderSpinner", 0) == 0) {
-            Toast.makeText(getActivity(), "Alle Felder im Tab 'Account' müssen ausgefüllt sein!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.calculation_everythingmustbefilled), Toast.LENGTH_SHORT).show();
 
-            //Fragment fragment = new Main_Account_Promillometer();
-           // FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-            //fragmentTransaction.replace(R.id.main_frameLayoutA, fragment);
-            //fragmentTransaction.commit();
 
 
         } else {
@@ -304,7 +294,6 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy  HH:mm");
                 soberTimeTv.setText(dateFormat.format(cal.getTime()));
                 editor.putString("soberTimeTv", dateFormat.format(cal.getTime())).commit();
-                editor.putString(getString(R.string.time), soberTimeTv.getText().toString()).commit();
 
 
                 // ----------------------- Print last Drinks List -----------------------
@@ -358,9 +347,8 @@ public class Main_Calculation_Result_Promillometer extends Fragment implements V
         soberTimeTv.setText(Time);
         editor.putLong("lastUpdateTime", System.currentTimeMillis()).commit();
 
-
         if(mPreferences.getFloat("AlcLevel",0) >= 0.6){
-            Toast.makeText(getActivity(), "Achtung! du hast über 0,5 Promille. Bitte lenke kein Fahrzeug mehr!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), getString(R.string.calculation_attention), Toast.LENGTH_LONG).show();
         }
 
     }

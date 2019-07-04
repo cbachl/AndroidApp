@@ -29,34 +29,17 @@ public class Main_Account_Promillometer extends Fragment implements View.OnClick
 
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
-    EditText mGeburtstag;
-    EditText mGröße, mGewicht ;
+    EditText mGeburtstag,mGröße, mGewicht ;
     private Button btnSave,btnclear;
-
     TextView ergebnis;
     Spinner GenderSpinner;
 
 
-
-
-
-
-    public Main_Account_Promillometer() {
-
-
-    }
-
-
+    public Main_Account_Promillometer() { }
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-
-
-
-        //Shared Preferences
         View view = inflater.inflate(R.layout.fragment_main_account, container, false);
         final  View view2 = inflater.inflate(R.layout.fragment_main_calculation, container,false);
 
@@ -66,109 +49,52 @@ public class Main_Account_Promillometer extends Fragment implements View.OnClick
         mGröße = (EditText) view.findViewById(R.id.get_text_größe_fregment);
         btnSave = (Button) view.findViewById(R.id.button);
         btnclear = (Button) view.findViewById(R.id.button_Account_clear);
-
         ergebnis = (TextView)view2.findViewById(R.id.berechnung_ausgabe);
         btnSave.setOnClickListener(this);
         btnclear.setOnClickListener(this);
 
-        //Spinner
-        //SAVE
         mPreferences = getActivity().getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
         mEditor = mPreferences.edit();
-        //POSITION BEKOMMEN
         int LastClickGenderSpinner = mPreferences.getInt("LastClickGenderSpinner",0);
 
 
         GenderSpinner = (Spinner)view.findViewById(R.id.spinner_male_female);
 
         final List<SpinnerData>CustomList= new ArrayList<>();
-        CustomList.add(new SpinnerData(R.drawable.gender_spinner_blank,"Auswählen"));
-        CustomList.add(new SpinnerData(R.drawable.gender_spinner_male,"Männlich"));
-        CustomList.add(new SpinnerData(R.drawable.gender_spinner_female,"Weiblich"));
+        CustomList.add(new SpinnerData(R.drawable.gender_spinner_blank,getString(R.string.account_choosegender)));
+        CustomList.add(new SpinnerData(R.drawable.gender_spinner_male,getString(R.string.account_gender_male)));
+        CustomList.add(new SpinnerData(R.drawable.gender_spinner_female,getString(R.string.account_gender_female)));
 
         CustomSpinnerAdapter customSpinnerAdapter =
                 new CustomSpinnerAdapter(getActivity(),R.layout.spinneritem,CustomList);
 
         GenderSpinner.setAdapter(customSpinnerAdapter);
-
-        //SAVEEEEEE
         saveSpinnerGender(LastClickGenderSpinner);
-        ///SPINNER ENDE
-
-
-
 
         checkSharedPreferences();
-
-
-
-
         return view;
     }
 
     private void checkSharedPreferences(){
-
-        String gebDatum = mPreferences.getString(getString(R.string.gebDatum), "");
-        String gewicht = mPreferences.getString(getString(R.string.gewicht), "");
-        String größe = mPreferences.getString(getString(R.string.größe), "");
-
-
-        mGeburtstag.setText(gebDatum);
-        mGewicht.setText(gewicht);
-        mGröße.setText(größe);
-
-
-
+        mGeburtstag.setText(mPreferences.getString("age", ""));
+        mGewicht.setText(mPreferences.getString("weight", ""));
+        mGröße.setText(mPreferences.getString("size", ""));
     }
     @Override
     public void onClick(View v){
-        if(v.getId()==R.id.button) {
-
-            Toast.makeText(getActivity(),"Daten gespeichert!",Toast.LENGTH_SHORT).show();
-
-            //save geb
-            String geburtsdatum = mGeburtstag.getText().toString();
-            mEditor.putString(getString(R.string.gebDatum), geburtsdatum);
-            mEditor.commit();
-
-            //save gewicht
-            String gewicht = mGewicht.getText().toString();
-            mEditor.putString(getString(R.string.gewicht), gewicht);
-            mEditor.commit();
-
-            //save größe
-            String größe = mGröße.getText().toString();
-            mEditor.putString(getString(R.string.größe), größe);
-            mEditor.commit();
+        if(v.getId()==R.id.button) { //save
+            Toast.makeText(getActivity(),getString(R.string.data_saved),Toast.LENGTH_SHORT).show();
+            mEditor.putString("age", mGeburtstag.getText().toString()).commit();
+            mEditor.putString("weight", mGewicht.getText().toString()).commit();
+            mEditor.putString("size", mGröße.getText().toString()).commit();
             checkSharedPreferences();
-
-
-
-
-        }else if (v.getId()==R.id.button_Account_clear){
-
-
-            //save geb
-            mEditor.putString(getString(R.string.gebDatum), "");
-            mEditor.commit();
-
-            //save gewicht
-            mEditor.putString(getString(R.string.gewicht), "");
-            mEditor.commit();
-
-            //save größe
-            mEditor.putString(getString(R.string.größe), "");
-            mEditor.commit();
-
+        }else if (v.getId() == R.id.button_Account_clear){ //clear all
+            mEditor.putString("age", "").commit();
+            mEditor.putString("weight", "").commit();
+            mEditor.putString("Size", "").commit();
             saveSpinnerGender(0);
-
             checkSharedPreferences();
-
-           // Main_Calculation_Result_Promillometer.reset();
-
         }
-
-
     }
     public void saveSpinnerGender(int LastClickGenderSpinner){
 
@@ -176,20 +102,11 @@ public class Main_Account_Promillometer extends Fragment implements View.OnClick
         GenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //SAVEEEEE
-
                 mEditor.putInt("LastClickGenderSpinner",position).commit();
-
-
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
-
-
     }
 
 

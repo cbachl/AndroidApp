@@ -1,13 +1,51 @@
 <resources>
-    <string name="app_name">Promill</string>
-    <string name="Promillometer">Promillometer</string>
-    <string name="checkbox">at.fhooe.mc.android.promillometer.checkbox</string>
-    <string name="größe">at.fhooe.mc.android.promillometer.größe</string>
-    <string name="gewicht">at.fhooe.mc.android.promillometer.gewicht</string>
-    <string name="gebDatum">at.fhooe.mc.android.promillometer.gebDatum</string>
-    <string name="geschlecht">at.fhooe.mc.android.promillometer.geschlecht</string>
-    <string name="result">at.fhooe.mc.android.promillometer.result</string>
-    <string name="time">at.fhooe.mc.android.promillometer.time</string>
+
+
+    <string name="save">Save</string>
+    <string name="clear">Clear</string>
+    <string name="add">Add</string>
+    <string name="new_measure">New Measure</string>
+
+    <string name="age">Age</string>
+    <string name="weight">Weight</string>
+    <string name="size">Size</string>
+    <string name="gender">Gender</string>
+
+
+    <string name="age_years">(years)</string>
+    <string name="weight_kg">(kg)</string>
+    <string name="size_cm">(cm)</string>
+    <string name="account_attention">The calculated values ​​are only guideline values! Please never drive by car under the influence of alcohol. Promillometer is not liable for any incorrectly calculated values.</string>
+
+    <string name="data_saved">Data Saved!</string>
+
+    //Promillometer
+    <string name="promillometer_connected_no">Connected: NO</string>
+    <string name="promillometer_connected_yes">Connected: YES</string>
+    <string name="promillometer_permission_retry">Please accept the permission, \nelse the App will not work correctly... \nNew Request in 3 seconds.</string>
+    <string name="promillometer_preheating">Promillometer is preheating.\nPlease wait</string>
+    <string name="seconds">seconds</string>
+    <string name="promillometer_promille">Promille\n</string>
+    <string name="promillometer_pleaseblow">Please blow </string>
+    <string name="promillometer_pleaseblowseconds">seconds!\n</string>
+    <string name="promillometer_undefinedstatus">Undefined status:</string>
+    <string name="promillometer_pleaseconnect">Please plug the Promillometer in your Smartphone now.</string>
+    <string name="promillometer_value">Alcohol value</string>
+
+
+    //Account
+    <string name="account_choosegender">Choose:</string>
+    <string name="account_gender_male">Male</string>
+    <string name="account_gender_female">Female</string>
+
+
+    //Calculation
+    <string name="calculation_calculatedvalue">Calculated Alcohol Value</string>
+    <string name="calculation_soberat">Sober at</string>
+    <string name="calculation_choosedrink">Choose Drink</string>
+    <string name="calculation_everythingmustbefilled">"Everything in Tab 'Account' must be filled out correctly!"</string>
+    <string name="calculation_attention">"Attention! you have over 0.5 Promille. Please do not steer a vehicle anymore!"</string>
+    <string name="calculation_last_drinks">Last Drinks:</string>
 
 
 

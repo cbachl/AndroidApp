@@ -15,7 +15,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
 
-        android:text="Alter"
+        android:text="@string/age"
         android:textAlignment="center"
         android:textColor="@color/myColorOrange"
         android:textSize="24sp"
@@ -31,7 +31,7 @@
         android:layout_alignParentTop="true"
         android:ems="10"
 
-        android:hint="in Jahren"
+        android:hint="@string/age_years"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_pressed"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Gewicht"
+        android:text="@string/weight"
         android:textAlignment="center"
         android:textColor="@color/myColorOrange"
         android:textSize="24sp"
@@ -62,7 +62,7 @@
         android:layout_alignParentTop="true"
         android:ems="10"
 
-        android:hint="in kg"
+        android:hint="@string/weight_kg"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_pressed"
@@ -78,7 +78,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
-        android:text="Größe"
+        android:text="@string/size"
         android:textAlignment="center"
         android:textColor="@color/myColorOrange"
         android:textSize="24sp"
@@ -94,7 +94,7 @@
         android:layout_alignParentBottom="true"
         android:ems="10"
 
-        android:hint="in cm"
+        android:hint="@string/size_cm"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_pressed"
@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Geschlecht"
+        android:text="@string/gender"
         android:textAlignment="center"
         android:textColor="@color/myColorOrange"
         android:textSize="24sp"
@@ -138,7 +138,7 @@
         android:layout_marginStart="77dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="23dp"
-        android:text="Speichern"
+        android:text="@string/save"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintEnd_toStartOf="@+id/button_Account_clear"
         app:layout_constraintStart_toStartOf="parent"
@@ -152,11 +152,25 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="84dp"
-        android:text="Löschen"
+        android:text="@string/clear"
         android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/spinner_male_female" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:text="@string/account_attention"
+        android:textAlignment="center"
+        android:textColor="@color/nav_toolbar_grey"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_Account_clear" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -28,8 +28,7 @@ import static at.krmmr.promillometer.Main_Calculation_Result_Promillometer.sober
  */
 public class Main_Promillometer_Start_Screen extends Fragment implements View.OnClickListener, ArduinoListener {
 
-    TextView tv_connected;
-    TextView tv_value;
+    TextView tv_connected, tv_value;
     Button b;
     Arduino arduino;
     boolean connected;
@@ -52,28 +51,21 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
         arduino.addVendorId(6790);
 
         tv_connected = view.findViewById(R.id.promillometer_connected_Tv);
-        tv_connected.setText("Verbunden: NEIN");
+        tv_connected.setText(getString(R.string.promillometer_connected_no));
         tv_value = view.findViewById(R.id.promillometer_value_Tv);
         tv_value.setText("");
 
         if(connected){
 
         }else {
-            Toast.makeText(getActivity(), "Stecke den Promillometer in dein Smartphone", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), getString(R.string.promillometer_pleaseconnect), Toast.LENGTH_LONG).show();
         }
-
         b = view.findViewById(R.id.promillometer_restart_Bt);
         b.setOnClickListener(this);
         b = view.findViewById(R.id.promillometer_save_Bt);
         b.setOnClickListener(this);
-
-
         return view;
     }
-
-
-
-
 
 
 
@@ -100,14 +92,14 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
 
     @Override
     public void onArduinoOpened() {
-        tv_connected.setText("Verbunden: JA");
+        tv_connected.setText(getString(R.string.promillometer_connected_yes));
         connected = true;
 
     }
 
     @Override
     public void onArduinoDetached() {
-        tv_connected.setText("Verbunden: NEIN");
+        tv_connected.setText(getString(R.string.promillometer_connected_no));
         tv_value.setText("");
         connected = false;
         arduino.close();
@@ -122,7 +114,7 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
 
     @Override
     public void onUsbPermissionDenied() {
-        Toast.makeText(getActivity(),"Du musst die Erlaubnis erteilen, \nsonst kann die App nicht funktionieren... \nNeue Anfrage in 3 Sekunden",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(),getString(R.string.promillometer_permission_retry),Toast.LENGTH_SHORT).show();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -130,8 +122,6 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
             }
         }, 3000);
     }
-
-
 
 
     public void display(final String message){
@@ -146,17 +136,17 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
                     msg = message.substring(5);
                     float alcVal = Float.parseFloat(msg);
                     editor.putFloat("AlcLevel_Promillometer", alcVal).commit();
-                    tv_value.setText(msg + " Promille\n");
+                    tv_value.setText(msg + getString(R.string.promillometer_promille));
                 }
                 else if(message.startsWith("_Preheat:")){
                     msg = message.substring(9);
-                    tv_value.setText("Promillometer heizt sich auf.\nBitte warte noch " + msg + " Sekunden\n");
+                    tv_value.setText(getString(R.string.promillometer_preheating) + msg + " " + getString(R.string.seconds) + "\n");
                 }
                 else if(message.startsWith("_Blow:")){
                     msg = message.substring(6);
-                    tv_value.setText("Bitte noch " + msg + " Sekunden blasen!\n");
+                    tv_value.setText(getString(R.string.promillometer_pleaseblow) + msg + getString(R.string.promillometer_pleaseblowseconds));
                 }else {
-                    tv_value.setText("Undefinierter Status: " + message);
+                    tv_value.setText(getString(R.string.promillometer_undefinedstatus) + message);
                 }
             }
         });
@@ -185,15 +175,4 @@ public class Main_Promillometer_Start_Screen extends Fragment implements View.On
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 }

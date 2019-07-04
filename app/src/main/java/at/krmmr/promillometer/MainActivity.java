@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences mPreferences = getSharedPreferences("myDatabaseAccount", MODE_PRIVATE);
         SharedPreferences.Editor editor = mPreferences.edit();
-        String geb = mPreferences.getString(getString(R.string.gebDatum), "0");
-        String gew = mPreferences.getString(getString(R.string.gewicht), "0");
-        String größ = mPreferences.getString(getString(R.string.größe), "0");
+        String geb = mPreferences.getString("age", "0");
+        String gew = mPreferences.getString("weight", "0");
+        String größ = mPreferences.getString("size", "0");
 
         if (gew.isEmpty() || geb.equals("") || größ.equals("") || mPreferences.getInt("LastClickGenderSpinner", 0) == 0) {
 

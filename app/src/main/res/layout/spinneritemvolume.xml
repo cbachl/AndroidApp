@@ -10,14 +10,14 @@
     <TextView
         android:id="@+id/textItemSpinner"
         android:layout_width="100dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:background="#373735"
 
         android:padding="5dp"
         android:text="TextView"
         android:textAlignment="viewStart"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
